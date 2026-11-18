@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+---
+
+<Layout
+  title={`Friends | ${config.site.title}`}
+  description="People and sites worth revisiting."
+>
+  <Header />
+  <Breadcrumb />
+  <Main pageTitle="Friends" pageDesc="People and sites worth revisiting.">
+    <div class="empty-state">
+      <p class="font-bold">The list is empty for now.</p>
+      <p class="text-muted-foreground mt-2">
+        Creators, independent builders and thoughtful sites will appear here.
+      </p>
+    </div>
+  </Main>
+  <Footer />
+</Layout>

@@ -1,0 +1,51 @@
+---
+// Rendered on each post page, after the share links and before the
+// previous/next links. Add comments, a newsletter form or an author bio
+// here; use `post` to skip some posts. This file is yours: AstroPaper
+// never changes it after release.
+import type { CollectionEntry } from "astro:content";
+import config from "@/config";
+
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+
+const repoId = import.meta.env.PUBLIC_GISCUS_REPO_ID;
+const categoryId = import.meta.env.PUBLIC_GISCUS_CATEGORY_ID;
+const enabled = Boolean(repoId && categoryId);
+const locale = Astro.currentLocale ?? config.site.lang;
+---
+
+{
+  enabled ? (
+    <section class="border-border mt-12 border-t pt-10" aria-label="Comments">
+      <h2 class="mb-6 text-xl font-bold">
+        {locale === "en" ? "Discussion" : "评论与讨论"}
+      </h2>
+      <script
+        src="https://giscus.app/client.js"
+        data-repo="lgylgy1/blog"
+        data-repo-id={repoId}
+        data-category="Announcements"
+        data-category-id={categoryId}
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang={locale === "en" ? "en" : "zh-CN"}
+        crossorigin="anonymous"
+        async
+      />
+    </section>
+  ) : (
+    <section class="border-border mt-12 border-t pt-8">
+      <p class="text-muted-foreground text-sm">
+        {locale === "en"
+          ? "Comments will be enabled after GitHub Discussions is configured."
+          : "启用 GitHub Discussions 并配置 Giscus 后，评论区会自动显示在这里。"}
+      </p>
+    </section>
+  )
+}

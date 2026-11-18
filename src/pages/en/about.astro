@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import avatar from "@/assets/images/avatar.jpg";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+---
+
+<Layout
+  title={`About | ${config.site.title}`}
+  description="About blacking and why this blog exists."
+>
+  <Header />
+  <Breadcrumb />
+  <Main
+    pageTitle="About"
+    pageDesc="About blacking and why this blog exists."
+    class="app-prose"
+  >
+    <Image
+      src={avatar}
+      alt="blacking"
+      widths={[480, 960]}
+      sizes="(max-width: 768px) 100vw, 480px"
+      class="grayscale"
+    />
+    <p>
+      Hi, I am <strong>blacking</strong>, an explorer on the road of
+      entrepreneurship.
+    </p>
+    <p>
+      This page is intentionally brief for now. I will add a fuller introduction
+      as my experience and thinking become clearer.
+    </p>
+    <h2>This blog</h2>
+    <p>
+      I write about observations, decisions, experiments and reflection while
+      building.
+    </p>
+  </Main>
+  <Footer />
+</Layout>

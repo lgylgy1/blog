@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import config from "@/config";
+
+const posts = getSortedPosts(await getCollection("posts"));
+---
+
+<Layout title={`Posts | ${config.site.title}`}>
+  <Header />
+  <Breadcrumb />
+  <Main pageTitle="Posts" pageDesc="All public notes and reflections.">
+    {
+      posts.length > 0 ? (
+        <ul>
+          {posts.map(post => (
+            <Card {...post} />
+          ))}
+        </ul>
+      ) : (
+        <div class="empty-state">
+          <p class="font-bold">The first note is on its way.</p>
+          <p class="text-muted-foreground mt-2">
+            Published writing will appear here automatically.
+          </p>
+        </div>
+      )
+    }
+  </Main>
+  <Footer />
+</Layout>
