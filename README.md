@@ -36,17 +36,17 @@ draft: false
 ## 评论
 
 1. 在 GitHub 仓库中启用 Discussions。
-2. 安装并配置 Giscus。
-3. 复制 `.env.example` 为 `.env`，填写：
+2. 为 `lgylgy1/blog` 安装 [Giscus GitHub App](https://github.com/apps/giscus)。
+3. 在仓库 `Settings → Secrets and variables → Actions → Variables` 中添加：
 
 ```text
-PUBLIC_GISCUS_REPO_ID=
-PUBLIC_GISCUS_CATEGORY_ID=
+PUBLIC_GISCUS_REPO_ID=R_kgDOVyjOcA
+PUBLIC_GISCUS_CATEGORY_ID=DIC_kwDOVyjOcM4DLY8E
 ```
 
 ## 访问统计
 
-可选接入 Umami：
+可选接入 Umami，在仓库 Actions Variables 中添加：
 
 ```text
 PUBLIC_UMAMI_WEBSITE_ID=
